@@ -29,7 +29,7 @@ setInterval(function () {
 }, 3000)
 ```
 
-Running the above should should the sampler meassuring the event loop delay.
+Running the above should run the sampler measuring the event loop delay.
 
 ## API
 
