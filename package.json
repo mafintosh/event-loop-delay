@@ -1,6 +1,6 @@
 {
   "name": "event-loop-delay",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A minimal overhead event loop delay sampler.",
   "main": "index.js",
   "dependencies": {
