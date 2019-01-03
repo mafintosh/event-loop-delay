@@ -39,7 +39,7 @@ Make a new sampler. Will sample the event loop every 10ms.
 
 #### `sampler.delay`
 
-Accumulated event loop delay in ms meassured since sampler was created.
+Accumulated event loop delay in ms measured since sampler was created.
 
 #### `sampler.times`
 
