@@ -29,7 +29,7 @@ setInterval(function () {
 }, 3000)
 ```
 
-Running the above should should the sampler meassuring the event loop delay.
+Running the above should run the sampler measuring the event loop delay.
 
 ## API
 
@@ -39,7 +39,7 @@ Make a new sampler. Will sample the event loop every 10ms.
 
 #### `sampler.delay`
 
-Accumulated event loop delay in ms meassured since sampler was created.
+Accumulated event loop delay in ms measured since sampler was created.
 
 #### `sampler.times`
 
