@@ -4,11 +4,11 @@
   "description": "A minimal overhead event loop delay sampler.",
   "main": "index.js",
   "dependencies": {
-    "napi-macros": "^1.8.2",
-    "node-gyp-build": "^3.7.0"
+    "napi-macros": "^2.0.0",
+    "node-gyp-build": "^4.2.0"
   },
   "devDependencies": {
-    "prebuildify": "^2.10.0"
+    "prebuildify": "^3.0.4"
   },
   "scripts": {
     "prebuild": "cd native && prebuildify --napi"
