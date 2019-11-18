@@ -11,11 +11,12 @@ typedef struct {
   uint32_t times;
   uint64_t prev;
   uv_timer_t timer;
+  napi_ref buffer;
+  napi_env env;
 } delay_timer_t;
 
 static void on_uv_interval (uv_timer_t *req) {
   delay_timer_t *delay = (delay_timer_t *) req->data;
-
   uint64_t time = uv_hrtime();
   uint64_t delta = time - delay->prev;
 
@@ -29,11 +30,17 @@ static void on_uv_interval (uv_timer_t *req) {
   delay->prev = time;
 }
 
+static void on_uv_close (uv_handle_t *handle) {
+  delay_timer_t *self = (delay_timer_t *) handle->data;
+  napi_delete_reference(self->env, self->buffer);
+}
+
 NAPI_METHOD(stop_delay_timer) {
   NAPI_ARGV(1)
   NAPI_ARGV_BUFFER_CAST(delay_timer_t *, delay, 0)
-  
+
   uv_timer_stop(&(delay->timer));
+  uv_close((uv_handle_t *) &(delay->timer), on_uv_close);
 
   return NULL;
 }
@@ -43,6 +50,9 @@ NAPI_METHOD(start_delay_timer) {
   NAPI_ARGV_BUFFER_CAST(delay_timer_t *, delay, 0)
 
   uv_timer_init(uv_default_loop(), &(delay->timer));
+  napi_create_reference(env, argv[0], 1, &(delay->buffer));
+
+  delay->env = env;
   delay->prev = uv_hrtime();
   delay->timer.data = delay;
 
