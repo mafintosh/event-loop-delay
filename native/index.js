@@ -1,5 +1,4 @@
 const binding = require('node-gyp-build')(__dirname)
-const util = require('util')
 
 module.exports = function samplerNative () {
   const buf = Buffer.alloc(binding.sizeof_delay_timer_t)
@@ -18,8 +17,11 @@ module.exports = function samplerNative () {
     destroy () {
       binding.stop_delay_timer(buf)
     },
-    [util.inspect.custom] () {
+    [Symbol.for('bare.inspect')] () {
       return { native: true, delay: this.delay, times: this.times, destroy: this.destroy }
+    },
+    [Symbol.for('nodejs.util.inspect.custom')] () {
+      return [Symbol.for('bare.inspect')]()
     }
   }
 }
