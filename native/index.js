@@ -17,11 +17,8 @@ module.exports = function samplerNative () {
     destroy () {
       binding.stop_delay_timer(buf)
     },
-    [Symbol.for('bare.inspect')] () {
-      return { native: true, delay: this.delay, times: this.times, destroy: this.destroy }
-    },
     [Symbol.for('nodejs.util.inspect.custom')] () {
-      return [Symbol.for('bare.inspect')]()
+      return { native: true, delay: this.delay, times: this.times, destroy: this.destroy }
     }
   }
 }
