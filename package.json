@@ -4,15 +4,13 @@
   "description": "A minimal overhead event loop delay sampler.",
   "main": "index.js",
   "dependencies": {
-    "bare-hrtime": "^2.0.9",
-    "napi-macros": "^2.0.0",
-    "node-gyp-build": "^4.2.0"
+    "bare-hrtime": "^2.0.9"
   },
-  "devDependencies": {
-    "prebuildify": "^3.0.4"
-  },
-  "scripts": {
-    "prebuild": "cd native && prebuildify --napi"
+  "imports": {
+    "./hrtime": {
+      "bare": "bare-hrtime",
+      "default": "./hrtime.js"
+    }
   },
   "repository": {
     "type": "git",

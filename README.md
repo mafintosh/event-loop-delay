@@ -6,10 +6,6 @@ A minimal overhead event loop delay sampler.
 npm install event-loop-delay
 ```
 
-Bundles a prebuilt N-API addon that makes the overhead of the sampler very minimal (around 0.2% on my machine, ymmv).
-
-If the addon fails for some reason a JS fallback is used with a bit higher overhead (around 1-2% on my machine).
-
 ## Usage
 
 ``` js
@@ -48,10 +44,6 @@ Accumulated times the event loop delay was detected.
 #### `sampler.destroy()`
 
 Destroys the sampler.
-
-#### `sampler.native`
-
-Boolean telling you if the native addon is used.
 
 ## License
 
