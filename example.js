@@ -1,7 +1,7 @@
 const sampler = require('./')()
 
 setInterval(function () {
-  console.log(sampler)
+  if (sampler.delay) console.log(sampler)
 }, 1000)
 
 setInterval(function () {
