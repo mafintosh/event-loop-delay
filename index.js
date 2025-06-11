@@ -30,6 +30,7 @@ module.exports = function samplerJavascript () {
 }
 
 function now () {
+  if (!hrtime) return Date.now()
   const ts = hrtime()
   return (ts[0] * 1e3) + Math.floor((ts[1] / 1e6))
 }

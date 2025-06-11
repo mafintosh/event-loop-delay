@@ -1,1 +1,1 @@
-module.exports = process.hrtime.bind(process)
+module.exports = global.process ? global.process.hrtime.bind(process) : null
