@@ -4,7 +4,7 @@ module.exports = function samplerJavascript () {
   let prev = now()
 
   const interval = setInterval(tick, 10)
-  interval.unref()
+  if (interval.unref) interval.unref()
 
   const delayer = {
     delay: 0,
